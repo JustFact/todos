@@ -1,4 +1,4 @@
-const todoSymbol = Symbol('todo');
+import { todoSymbol,createTodoItem } from "./todo.js";
 
 function findInstanceOf(element){
     //this will determine whether the element passed is
@@ -9,7 +9,6 @@ function findInstanceOf(element){
 }
 
 function createBucket (title){
-    this.title = title;
     const bucketList = [];
 
     //element could be a todo List, notes or checklist
@@ -21,15 +20,6 @@ function createBucket (title){
     }
 
     return { title, addToBucketList };
-}
-
-function createTodoItem(title,description,dueDate,priority){
-    this.title = title;
-    this.description = description;
-    this.dueDate = dueDate;
-    this.priority = priority
-
-    return { [todoSymbol]:true, title,description,dueDate,priority };
 }
 
 let myBucket = createBucket('myBucket');
