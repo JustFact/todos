@@ -12,26 +12,31 @@ function findInstanceOf(element) {
 }
 
 function createBucket(title) {
-  const bucketList = [];
+  const todo = [];
+  const note = [];
+  const bucketList = [todo, note];
 
   //element could be a todo List, notes or checklist
   const addToBucketList = (element) => {
     switch (findInstanceOf(element)) {
       case "todo":
-        console.log("It's a todo item");
+        bucketList[0].push(element);
         break;
       case "note":
-        console.log("it's a note");
+        bucketList[1].push(element);
         break;
     }
   };
-
-  return { title, addToBucketList };
+  const getBucketList = () => {
+    return bucketList;
+  };
+  return { title, addToBucketList, getBucketList };
 }
 
 //temporary code to check functionality
 let myBucket = createBucket("myBucket");
-let myTodo = createTodoItem("myTodo", "test", "Nov,11", "1");
+let myTodo = createTodoItem("myTodo", "test", "Jan,01", "1");
 let myNote = createNote("myNote", "test");
 myBucket.addToBucketList(myTodo);
 myBucket.addToBucketList(myNote);
+console.log(myBucket.getBucketList());
