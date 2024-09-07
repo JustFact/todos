@@ -1,15 +1,6 @@
-import { todoSymbol, createTodoItem } from "./todo.js";
-import { noteSymbol, createNote } from "./note.js";
-
-function findInstanceOf(element) {
-  //this will determine whether the element passed is
-  //a todo item, note,
-  if (element[todoSymbol]) {
-    return "todo";
-  } else if (element[noteSymbol]) {
-    return "note";
-  }
-}
+import { createTodoItem } from "./todo.js";
+import { createNote } from "./note.js";
+import { findInstanceOf } from "./utility.js";
 
 function createBucket(title) {
   const todo = [];
