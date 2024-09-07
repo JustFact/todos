@@ -27,10 +27,23 @@ function createBucket(title) {
         break;
     }
   };
+
+  const deleteFromBucket = (index, element) => {
+    switch (findInstanceOf(element)) {
+      case "todo":
+        bucket[0].splice(index, 1);
+        break;
+      case "note":
+        bucket[1].splice(index, 1);
+        break;
+    }
+  };
+
   const getBucket = () => {
     return bucket;
   };
-  return { title, addToBucket, getBucket };
+
+  return { title, addToBucket, getBucket, deleteFromBucket };
 }
 
 //temporary code to check functionality
@@ -39,4 +52,6 @@ let myTodo = createTodoItem("myTodo", "test", "Jan,01", "1");
 let myNote = createNote("myNote", "test");
 myBucket.addToBucket(myTodo);
 myBucket.addToBucket(myNote);
+myBucket.addToBucket("This won't be added");
+myBucket.deleteFromBucket(0, myNote);
 console.log(myBucket.getBucket());
