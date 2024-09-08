@@ -1,3 +1,5 @@
+import "./style.css";
+
 export const getBucketListNavigator = (BucketList) => {
   const bucketUL = document.createElement("ul");
   for (let bucket of BucketList) {
