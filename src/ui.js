@@ -13,7 +13,7 @@ export const getBucketListNavigator = (BucketList) => {
     const subBucketTodos = document.createElement("li");
     const subBucketNotes = document.createElement("li");
 
-    bucketTitle.innerText = BucketList[0].title;
+    bucketTitle.innerText = BucketList[i].title;
     subBucketTodos.innerText = "Todos";
     subBucketTodos.dataset.index = `todo#${i}#00`;
     subBucketNotes.innerText = "Notes";
