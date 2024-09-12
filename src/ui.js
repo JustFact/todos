@@ -1,7 +1,12 @@
 import "./style.css";
+import { fetchData } from "./utility";
 
 const expand = (e) => {
   e.target.nextSibling.firstChild.classList.toggle("show");
+};
+
+const bucketListNavClick = (e) => {
+  console.log(fetchData(e.target.dataset.index));
 };
 
 export const getBucketListNavigator = (BucketList) => {
@@ -14,10 +19,14 @@ export const getBucketListNavigator = (BucketList) => {
     const subBucketNotes = document.createElement("li");
 
     bucketTitle.innerText = BucketList[i].title;
+
     subBucketTodos.innerText = "Todos";
-    subBucketTodos.dataset.index = `todo#${i}#00`;
+    subBucketTodos.dataset.index = `${i}#todo`;
+    subBucketTodos.addEventListener("click", bucketListNavClick);
+
     subBucketNotes.innerText = "Notes";
-    subBucketNotes.dataset.index = `note#${i}#01`;
+    subBucketNotes.dataset.index = `${i}#note`;
+    subBucketNotes.addEventListener("click", bucketListNavClick);
 
     bucketTitle.addEventListener("click", expand);
 
