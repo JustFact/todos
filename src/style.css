@@ -12,11 +12,14 @@ ul {
 
 ul:not(ul ul) {
     min-height: 100vh;
+    padding-top: 5vh;
+    padding-left: 2vw;
 }
 
 ul ul {
     background-color: blueviolet;
     display: none;
+    width: 10em;
 }
 
 .show {
@@ -27,4 +30,9 @@ ul > li {
     padding: 5px 2px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: aliceblue;
+}
+
+.side-panel {
+    height: 100vh;
+    width: 16vw;
 }
