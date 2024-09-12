@@ -6,16 +6,18 @@ const expand = (e) => {
 
 export const getBucketListNavigator = (BucketList) => {
   const bucketUL = document.createElement("ul");
-  for (let bucket of BucketList) {
+  for (let i = 0; i < BucketList.length; i++) {
     const bucketLI = document.createElement("li");
     const subBucketUL = document.createElement("ul");
     const bucketTitle = document.createElement("li");
     const subBucketTodos = document.createElement("li");
     const subBucketNotes = document.createElement("li");
 
-    bucketTitle.innerText = bucket.title;
+    bucketTitle.innerText = BucketList[0].title;
     subBucketTodos.innerText = "Todos";
+    subBucketTodos.dataset.index = `todo#${i}#00`;
     subBucketNotes.innerText = "Notes";
+    subBucketNotes.dataset.index = `note#${i}#01`;
 
     bucketTitle.addEventListener("click", expand);
 
