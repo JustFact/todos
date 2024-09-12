@@ -1,5 +1,9 @@
 import "./style.css";
 
+const expand = (e) => {
+  e.target.nextSibling.firstChild.classList.toggle("show");
+};
+
 export const getBucketListNavigator = (BucketList) => {
   const bucketUL = document.createElement("ul");
   for (let bucket of BucketList) {
@@ -12,6 +16,8 @@ export const getBucketListNavigator = (BucketList) => {
     bucketTitle.innerText = bucket.title;
     subBucketTodos.innerText = "Todos";
     subBucketNotes.innerText = "Notes";
+
+    bucketTitle.addEventListener("click", expand);
 
     bucketUL.append(bucketTitle);
     subBucketUL.append(subBucketTodos);
