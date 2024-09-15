@@ -12,10 +12,14 @@ export function findInstanceOf(element) {
   }
 }
 
+export function getElementTypeById(string) {
+  return string.split("#")[1];
+}
+
 export function fetchData(string) {
   let arr = string.split("#");
   let bucketData = bucketList[arr[0]].getBucket();
-  switch (arr[1]) {
+  switch (getElementTypeById(string)) {
     case "todo":
       return bucketData[0];
     case "note":

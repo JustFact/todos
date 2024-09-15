@@ -1,5 +1,5 @@
 import "./style.css";
-import { fetchData } from "./utility";
+import { fetchData, getElementTypeById } from "./utility";
 
 const expand = (e) => {
   e.target.nextSibling.firstChild.classList.toggle("show");
@@ -43,7 +43,7 @@ export const getBucketListNavigator = (BucketList) => {
 function displayUI(elementID) {
   let data = fetchData(elementID);
   let elementUI;
-  switch (elementID.split("#")[1]) {
+  switch (getElementTypeById(elementID)) {
     case "todo":
       elementUI = getTodoListUI(data);
       break;
