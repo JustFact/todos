@@ -7,7 +7,7 @@ const expand = (e) => {
 };
 
 const bucketListNavClick = (e) => {
-  console.log(fetchData(e.target.dataset.index));
+  displayUI(e.target.dataset.index);
 };
 
 export const getBucketListNavigator = (BucketList) => {
@@ -40,6 +40,21 @@ export const getBucketListNavigator = (BucketList) => {
 
   return bucketUL;
 };
+
+function displayUI(elementID) {
+  let data = fetchData(elementID);
+  let elementUI;
+  switch (elementID.split("#")[1]) {
+    case "todo":
+      elementUI = getTodoListUI(data);
+      break;
+    case "note":
+      elementUI = getNotesUI(data);
+      break;
+  }
+  let content = document.querySelector(".main-content");
+  content.replaceChildren(...[elementUI]);
+}
 
 function getTodoListUI(data) {
   const todoList = document.createElement("div");
