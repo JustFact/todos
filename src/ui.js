@@ -1,4 +1,3 @@
-import { bucketList } from "./bucketList";
 import "./style.css";
 import { fetchData } from "./utility";
 
@@ -68,10 +67,10 @@ function getTodoListUI(data) {
     const todoDueDate = document.createElement("div");
     const todoPriority = document.createElement("div");
 
-    todoTitle.innerText = bucketList[0].getBucket()[0][i].title;
-    todoDescription.innerText = bucketList[0].getBucket()[0][i].description;
-    todoDueDate.innerText = bucketList[0].getBucket()[0][i].dueDate;
-    todoPriority.innerText = bucketList[0].getBucket()[0][i].priority;
+    todoTitle.innerText = data[i].title;
+    todoDescription.innerText = data[i].description;
+    todoDueDate.innerText = data[i].dueDate;
+    todoPriority.innerText = data[i].priority;
 
     todoListItem.append(todoTitle, todoDescription, todoDueDate, todoPriority);
     todoList.append(todoListItem);
@@ -89,8 +88,8 @@ function getNotesUI(data) {
     const todoTitle = document.createElement("h3");
     const todoDescription = document.createElement("p");
 
-    todoTitle.innerText = bucketList[0].getBucket()[1][i].title;
-    todoDescription.innerText = bucketList[0].getBucket()[1][i].description;
+    todoTitle.innerText = data[i].title;
+    todoDescription.innerText = data[i].description;
 
     NoteListItem.append(todoTitle, todoDescription);
     NoteList.append(NoteListItem);
