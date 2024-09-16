@@ -63,9 +63,13 @@ function getTodoListUI(data) {
     todoListItem.classList.add("todoListItem");
 
     const todoTitle = document.createElement("h3");
+    todoTitle.classList.add("todo-title");
     const todoDescription = document.createElement("p");
+    todoDescription.classList.add("todo-description");
     const todoDueDate = document.createElement("div");
+    todoDueDate.classList.add("todo-dueDate");
     const todoPriority = document.createElement("div");
+    todoPriority.classList.add("todo-priority");
 
     todoTitle.innerText = data[i].title;
     todoDescription.innerText = data[i].description;
@@ -85,13 +89,15 @@ function getNotesUI(data) {
     const NoteListItem = document.createElement("div");
     NoteListItem.classList.add("NoteListItem");
 
-    const todoTitle = document.createElement("h3");
-    const todoDescription = document.createElement("p");
+    const noteTitle = document.createElement("h3");
+    noteTitle.classList.add("note-title");
+    const noteDescription = document.createElement("p");
+    noteDescription.classList.add("note-description");
 
-    todoTitle.innerText = data[i].title;
-    todoDescription.innerText = data[i].description;
+    noteTitle.innerText = data[i].title;
+    noteDescription.innerText = data[i].description;
 
-    NoteListItem.append(todoTitle, todoDescription);
+    NoteListItem.append(noteTitle, noteDescription);
     NoteList.append(NoteListItem);
   }
   return NoteList;
