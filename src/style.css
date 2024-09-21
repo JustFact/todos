@@ -57,8 +57,10 @@ ul > li {
   box-shadow: 0px 0px 35px -15px black;
   border-radius: 7px;
   width: 65vw;
+  height: 95vh;
   display: grid;
   align-content: start;
+  overflow-y: auto;
   /* gap: 5px; */
 }
 
