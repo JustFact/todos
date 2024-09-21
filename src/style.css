@@ -52,7 +52,8 @@ ul > li {
   justify-content: center;
 }
 
-.todoList {
+.todoList,
+.noteList {
   /* border: 1px solid red; */
   box-shadow: 0px 0px 35px -15px black;
   border-radius: 7px;
@@ -64,15 +65,18 @@ ul > li {
   /* gap: 5px; */
 }
 
-.todoListItem {
+.todoListItem,
+.noteListItem {
   border: 1px solid gainsboro;
   border-radius: inherit;
   margin: 5px;
   padding: 5px;
   display: grid;
+}
+
+.todoListItem {
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-columns: 3fr 1fr;
-  /* grid-column: 1fr 1fr; */
 }
 
 .todoListItem .todo-title {
@@ -80,5 +84,13 @@ ul > li {
 }
 
 .todoListItem .todo-description {
+  grid-row: 2/-1;
+}
+
+.noteListItem {
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.noteListItem .note-description {
   grid-row: 2/-1;
 }

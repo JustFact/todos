@@ -84,10 +84,10 @@ function getTodoListUI(data) {
 
 function getNotesUI(data) {
   const NoteList = document.createElement("div");
-  NoteList.classList.add("NoteList");
+  NoteList.classList.add("noteList");
   for (let i = 0; i < data.length; i++) {
     const NoteListItem = document.createElement("div");
-    NoteListItem.classList.add("NoteListItem");
+    NoteListItem.classList.add("noteListItem");
 
     const noteTitle = document.createElement("h3");
     noteTitle.classList.add("note-title");
