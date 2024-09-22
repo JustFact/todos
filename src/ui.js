@@ -1,6 +1,7 @@
 import "./style.css";
 import { fetchData, getElementTypeById } from "./utility";
 import { bucketList } from "./bucketList.js";
+import { createBucket } from "./bucket.js";
 
 const expand = (e) => {
   e.target.nextSibling.firstChild.classList.toggle("show");
@@ -117,9 +118,23 @@ function getNotesUI(data) {
   return NoteList;
 }
 
+function getModalInput(e) {
+  switch (e.target.dataset.elementOps) {
+    case "newBucket":
+      //Modal Input window display
+      //let data = ModalInput('new Bucket');
+      let data = "temp";
+      bucketList.push(createBucket(data));
+      displayUI();
+      break;
+  }
+}
+
 function getAddBucketButton() {
   let button = document.createElement("button");
   button.classList.add("addBucketButton");
   button.innerText = "+ New Bucket!";
+  button.dataset.elementOps = "newBucket";
+  button.addEventListener("click", getModalInput);
   return button;
 }
