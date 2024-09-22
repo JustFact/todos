@@ -60,12 +60,11 @@ export const displayUI = (elementID = 0) => {
 
     const sidePanel = document.createElement("div");
     sidePanel.classList.add("side-panel");
-    sidePanel.append(bucketListUI);
-    document.body.append(sidePanel);
+    sidePanel.replaceChildren(...[bucketListUI]);
 
     const content = document.createElement("div");
     content.classList.add("main-content");
-    document.body.append(content);
+    document.body.replaceChildren(...[sidePanel, content]);
   }
 };
 
