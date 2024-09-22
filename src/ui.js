@@ -57,10 +57,11 @@ export const displayUI = (elementID = 0) => {
     content.replaceChildren(...[elementUI]);
   } else {
     const bucketListUI = getBucketListNavigator(bucketList);
+    const addBucketButton = getAddBucketButton();
 
     const sidePanel = document.createElement("div");
     sidePanel.classList.add("side-panel");
-    sidePanel.replaceChildren(...[bucketListUI]);
+    sidePanel.replaceChildren(...[addBucketButton, bucketListUI]);
 
     const content = document.createElement("div");
     content.classList.add("main-content");
@@ -114,4 +115,11 @@ function getNotesUI(data) {
     NoteList.append(NoteListItem);
   }
   return NoteList;
+}
+
+function getAddBucketButton() {
+  let button = document.createElement("button");
+  button.classList.add("addBucketButton");
+  button.innerText = "+ New Bucket!";
+  return button;
 }
