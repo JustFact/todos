@@ -1,5 +1,6 @@
 import "./style.css";
 import { fetchData, getElementTypeById } from "./utility";
+import { bucketList } from "./bucketList.js";
 
 const expand = (e) => {
   e.target.nextSibling.firstChild.classList.toggle("show");
@@ -40,20 +41,33 @@ export const getBucketListNavigator = (BucketList) => {
   return bucketUL;
 };
 
-function displayUI(elementID) {
-  let data = fetchData(elementID);
-  let elementUI;
-  switch (getElementTypeById(elementID)) {
-    case "todo":
-      elementUI = getTodoListUI(data);
-      break;
-    case "note":
-      elementUI = getNotesUI(data);
-      break;
+export const displayUI = (elementID = 0) => {
+  if (elementID != 0) {
+    let data = fetchData(elementID);
+    let elementUI;
+    switch (getElementTypeById(elementID)) {
+      case "todo":
+        elementUI = getTodoListUI(data);
+        break;
+      case "note":
+        elementUI = getNotesUI(data);
+        break;
+    }
+    let content = document.querySelector(".main-content");
+    content.replaceChildren(...[elementUI]);
+  } else {
+    const bucketListUI = getBucketListNavigator(bucketList);
+
+    const sidePanel = document.createElement("div");
+    sidePanel.classList.add("side-panel");
+    sidePanel.append(bucketListUI);
+    document.body.append(sidePanel);
+
+    const content = document.createElement("div");
+    content.classList.add("main-content");
+    document.body.append(content);
   }
-  let content = document.querySelector(".main-content");
-  content.replaceChildren(...[elementUI]);
-}
+};
 
 function getTodoListUI(data) {
   const todoList = document.createElement("div");
