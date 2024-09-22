@@ -14,7 +14,7 @@ ul {
 }
 
 ul:not(ul ul) {
-  min-height: 100vh;
+  min-height: fit-content;
   padding-top: 1.5vh;
   padding-left: 2vw;
   min-width: 20vw;
@@ -50,7 +50,7 @@ ul > li {
 }
 
 .side-panel .addBucketButton {
-  width: 225px;
+  width: 80%;
   margin-top: 5vh;
   padding: 6px 13px;
 
@@ -71,6 +71,7 @@ ul > li {
   padding-top: 25px;
   display: flex;
   justify-content: center;
+  background-color: lightblue;
 }
 
 .todoList,
@@ -84,6 +85,8 @@ ul > li {
   align-content: start;
   overflow-y: auto;
   /* gap: 5px; */
+
+  background-color: whitesmoke;
 }
 
 .todoListItem,
