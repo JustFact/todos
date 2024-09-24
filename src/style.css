@@ -118,3 +118,33 @@ ul > li {
 .noteListItem .note-description {
   grid-row: 2/-1;
 }
+
+.newBucketDialog {
+  margin: auto;
+  background-color: plum;
+  border-radius: 10px;
+  border-top: 3px solid lightpink;
+  border-left: 3px solid lightpink;
+  border-bottom: 3px solid palevioletred;
+  border-right: 3px solid palevioletred;
+}
+
+.newBucketDialog .newBucketName {
+  outline: none;
+  border-radius: 5px;
+  background-color: whitesmoke;
+  border-top: 1px solid lightpink;
+  border-left: 1px solid lightpink;
+  border-bottom: 1px solid palevioletred;
+  border-right: 1px solid palevioletred;
+  margin-right: 5px;
+}
+
+.newBucketDialog .newBucketSubmitButton {
+  border-radius: 5px;
+  background-color: whitesmoke;
+  border-top: 1px solid lightpink;
+  border-left: 1px solid lightpink;
+  border-bottom: 1px solid palevioletred;
+  border-right: 1px solid palevioletred;
+}
