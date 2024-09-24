@@ -64,9 +64,11 @@ export const displayUI = (elementID = 0) => {
     sidePanel.classList.add("side-panel");
     sidePanel.replaceChildren(...[addBucketButton, bucketListUI]);
 
+    const addBucketDialog = getAddBucketDialogUI();
+
     const content = document.createElement("div");
     content.classList.add("main-content");
-    document.body.replaceChildren(...[sidePanel, content]);
+    document.body.replaceChildren(...[sidePanel, content, addBucketDialog]);
   }
 };
 
@@ -118,16 +120,9 @@ function getNotesUI(data) {
   return NoteList;
 }
 
-function getModalInput(e) {
-  switch (e.target.dataset.elementOps) {
-    case "newBucket":
-      //Modal Input window display
-      //let data = ModalInput('new Bucket');
-      let data = "temp";
-      bucketList.push(createBucket(data));
-      displayUI();
-      break;
-  }
+function displayAddBucketDialogUI(e) {
+  const addBucketDialog = document.querySelector(".newBucketDialog");
+  addBucketDialog.showModal();
 }
 
 function getAddBucketButton() {
@@ -135,6 +130,32 @@ function getAddBucketButton() {
   button.classList.add("addBucketButton");
   button.innerText = "+ New Bucket!";
   button.dataset.elementOps = "newBucket";
-  button.addEventListener("click", getModalInput);
+  button.addEventListener("click", displayAddBucketDialogUI);
   return button;
+}
+
+function getAddBucketDialogUI() {
+  let dialog = document.createElement("dialog");
+  dialog.classList.add("newBucketDialog");
+
+  let bucketName = document.createElement("input");
+  bucketName.classList.add("newBucketName");
+  bucketName.placeholder = "Enter New Bucket Name";
+
+  let button = document.createElement("button");
+  button.innerText = "Ok";
+  button.classList.add("newBucketSubmitButton");
+  button.addEventListener("click", (e) => {
+    e.preventDefault();
+    let newName = bucketName.value ? bucketName.value : "New Bucket";
+    bucketList.push(createBucket(newName));
+    dialog.close();
+    displayUI();
+  });
+
+  let form = document.createElement("form");
+  form.append(bucketName, button);
+
+  dialog.append(form);
+  return dialog;
 }
