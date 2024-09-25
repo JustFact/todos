@@ -223,6 +223,7 @@ function getAddTodoDialogUI() {
   let div = document.createElement("div");
   div.append(dueDateLabel, priorityLabel);
 
+  let buttonDiv = document.createElement("div");
   let buttonOk = document.createElement("button");
   buttonOk.classList.add("newTodoItemSubmitButton");
   buttonOk.innerText = "Ok";
@@ -231,8 +232,10 @@ function getAddTodoDialogUI() {
   buttonCancel.classList.add("newTodoItemCancelButton");
   buttonCancel.innerText = "Cancel";
 
+  buttonDiv.append(buttonOk, buttonCancel);
+
   let form = document.createElement("form");
-  form.append(todoTitle, todoDescription, div, buttonOk, buttonCancel);
+  form.append(todoTitle, todoDescription, div, buttonDiv);
 
   dialog.append(form);
   return dialog;

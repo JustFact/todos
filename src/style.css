@@ -7,6 +7,7 @@
 
 body {
   display: flex;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 ul {
@@ -140,7 +141,8 @@ ul > li:not(li > ul > li):nth-child(2n-1):hover {
   grid-row: 2/-1;
 }
 
-.newBucketDialog {
+.newBucketDialog,
+.newTodoItemDialog {
   margin: auto;
   background-color: lightpink;
   border-radius: 10px;
@@ -150,7 +152,29 @@ ul > li:not(li > ul > li):nth-child(2n-1):hover {
   border-right: 3px solid palevioletred;
 }
 
-.newBucketDialog .newBucketName {
+.newTodoItemDialog form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.newTodoItemDialog form div {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.newTodoItemDialog .newTodoDescription {
+  resize: none;
+}
+
+.newTodoItemDialog button {
+  width: 100px;
+  align-self: center;
+}
+
+.newBucketDialog .newBucketName,
+.newTodoItemDialog .newTodoTitle,
+.newTodoItemDialog .newTodoDescription {
   outline: none;
   border-radius: 5px;
   background-color: whitesmoke;
@@ -163,7 +187,8 @@ ul > li:not(li > ul > li):nth-child(2n-1):hover {
 }
 
 .newBucketDialog .newBucketSubmitButton,
-.newBucketDialog .newBucketCancelButton {
+.newBucketDialog .newBucketCancelButton,
+.newTodoItemDialog button {
   border-radius: 5px;
   background-color: whitesmoke;
   border-top: 1px solid lightpink;
