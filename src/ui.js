@@ -65,10 +65,13 @@ export const displayUI = (elementID = 0) => {
     sidePanel.replaceChildren(...[addBucketButton, bucketListUI]);
 
     const addBucketDialog = getAddBucketDialogUI();
+    const addTodoItemDialog = getAddTodoDialogUI();
 
     const content = document.createElement("div");
     content.classList.add("main-content");
-    document.body.replaceChildren(...[sidePanel, content, addBucketDialog]);
+    document.body.replaceChildren(
+      ...[sidePanel, content, addBucketDialog, addTodoItemDialog]
+    );
   }
 };
 
@@ -163,6 +166,73 @@ function getAddBucketDialogUI() {
 
   let form = document.createElement("form");
   form.append(bucketName, buttonOk, buttonCancel);
+
+  dialog.append(form);
+  return dialog;
+}
+
+function getAddTodoDialogUI() {
+  let dialog = document.createElement("dialog");
+  dialog.classList.add("newTodoItemDialog");
+
+  let todoTitle = document.createElement("input");
+  todoTitle.classList.add("newTodoTitle");
+  todoTitle.placeholder = "Enter Todo Title";
+
+  let todoDescription = document.createElement("textarea");
+  todoDescription.classList.add("newTodoDescription");
+  todoDescription.placeholder = "Enter Todo Description";
+  todoDescription.cols = 50;
+  todoDescription.rows = 5;
+
+  let dueDateLabel = document.createElement("label");
+  dueDateLabel.innerText = "Due Date: ";
+  let todoDueDate = document.createElement("input");
+  todoDueDate.classList.add("newTodoDueDate");
+  todoDueDate.type = "date";
+
+  dueDateLabel.append(todoDueDate);
+
+  let priorityLabel = document.createElement("label");
+  priorityLabel.innerText = "Priority: ";
+  let todoPriority = document.createElement("select");
+  todoPriority.classList.add("newTodoPriority");
+  let priorityOptionLow = document.createElement("option");
+  let priorityOptionMid = document.createElement("option");
+  let priorityOptionHigh = document.createElement("option");
+  let priorityOptionVHigh = document.createElement("option");
+
+  priorityOptionLow.value = 1;
+  priorityOptionLow.innerText = "Low";
+  priorityOptionMid.value = 2;
+  priorityOptionMid.innerText = "Medium";
+  priorityOptionHigh.value = 3;
+  priorityOptionHigh.innerText = "High";
+  priorityOptionVHigh.value = 4;
+  priorityOptionVHigh.innerText = "Very High";
+
+  todoPriority.append(
+    priorityOptionLow,
+    priorityOptionMid,
+    priorityOptionHigh,
+    priorityOptionVHigh
+  );
+
+  priorityLabel.append(todoPriority);
+
+  let div = document.createElement("div");
+  div.append(dueDateLabel, priorityLabel);
+
+  let buttonOk = document.createElement("button");
+  buttonOk.classList.add("newTodoItemSubmitButton");
+  buttonOk.innerText = "Ok";
+
+  let buttonCancel = document.createElement("button");
+  buttonCancel.classList.add("newTodoItemCancelButton");
+  buttonCancel.innerText = "Cancel";
+
+  let form = document.createElement("form");
+  form.append(todoTitle, todoDescription, div, buttonOk, buttonCancel);
 
   dialog.append(form);
   return dialog;
