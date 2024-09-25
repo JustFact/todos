@@ -71,7 +71,8 @@ ul > li:not(li > ul > li):nth-child(2n-1):hover {
   align-items: center;
 }
 
-.side-panel .addBucketButton {
+.side-panel .addBucketButton,
+.main-content .addTodoItemButton {
   width: 80%;
   margin-top: 5vh;
   padding: 6px 13px;
@@ -87,26 +88,29 @@ ul > li:not(li > ul > li):nth-child(2n-1):hover {
   font-weight: 600;
 }
 
+.addTodoItemButton {
+  max-width: 200px;
+}
+
 .main-content {
-  /* border: 1px solid greenyellow; */
   width: 100vw;
-  padding-top: 25px;
+  padding-top: 5px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
   background-color: lightblue;
 }
 
 .todoList,
 .noteList {
-  /* border: 1px solid red; */
   box-shadow: 0px 0px 35px -15px black;
   border-radius: 7px;
   width: 65vw;
-  height: 95vh;
+  height: 85vh;
   display: grid;
   align-content: start;
   overflow-y: auto;
-  /* gap: 5px; */
 
   background-color: whitesmoke;
 }
