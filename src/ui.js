@@ -46,16 +46,19 @@ export const displayUI = (elementID = 0) => {
   if (elementID != 0) {
     let data = fetchData(elementID);
     let elementUI;
+    let newItemButton;
     switch (getElementTypeById(elementID)) {
       case "todo":
         elementUI = getTodoListUI(data);
+        newItemButton = getAddTodoItemButton();
         break;
       case "note":
         elementUI = getNotesUI(data);
+        newItemButton = "Test2";
         break;
     }
     let content = document.querySelector(".main-content");
-    content.replaceChildren(...[elementUI]);
+    content.replaceChildren(...[newItemButton, elementUI]);
   } else {
     const bucketListUI = getBucketListNavigator(bucketList);
     const addBucketButton = getAddBucketButton();
@@ -74,6 +77,17 @@ export const displayUI = (elementID = 0) => {
     );
   }
 };
+
+function getAddTodoItemButton() {
+  let button = document.createElement("button");
+  button.classList.add("addTodoItemButton");
+  button.innerText = "+ New Todo Item";
+  button.addEventListener("click", (e) => {
+    let newTodoItemDialog = document.querySelector(".newTodoItemDialog");
+    newTodoItemDialog.showModal();
+  });
+  return button;
+}
 
 function getTodoListUI(data) {
   const todoList = document.createElement("div");
