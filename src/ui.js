@@ -142,10 +142,10 @@ function getAddBucketDialogUI() {
   bucketName.classList.add("newBucketName");
   bucketName.placeholder = "Enter New Bucket Name";
 
-  let button = document.createElement("button");
-  button.innerText = "Ok";
-  button.classList.add("newBucketSubmitButton");
-  button.addEventListener("click", (e) => {
+  let buttonOk = document.createElement("button");
+  buttonOk.innerText = "Ok";
+  buttonOk.classList.add("newBucketSubmitButton");
+  buttonOk.addEventListener("click", (e) => {
     e.preventDefault();
     let newName = bucketName.value ? bucketName.value : "New Bucket";
     bucketList.push(createBucket(newName));
@@ -153,8 +153,16 @@ function getAddBucketDialogUI() {
     displayUI();
   });
 
+  let buttonCancel = document.createElement("button");
+  buttonCancel.innerText = "Cancel";
+  buttonCancel.classList.add("newBucketCancelButton");
+  buttonCancel.addEventListener("click", (e) => {
+    e.preventDefault();
+    dialog.close();
+  });
+
   let form = document.createElement("form");
-  form.append(bucketName, button);
+  form.append(bucketName, buttonOk, buttonCancel);
 
   dialog.append(form);
   return dialog;

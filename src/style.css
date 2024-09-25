@@ -159,13 +159,18 @@ ul > li:not(li > ul > li):nth-child(2n-1):hover {
   border-bottom: 1px solid palevioletred;
   border-right: 1px solid palevioletred;
   margin-right: 5px;
+  padding: 5px 5px;
 }
 
-.newBucketDialog .newBucketSubmitButton {
+.newBucketDialog .newBucketSubmitButton,
+.newBucketDialog .newBucketCancelButton {
   border-radius: 5px;
   background-color: whitesmoke;
   border-top: 1px solid lightpink;
   border-left: 1px solid lightpink;
   border-bottom: 1px solid palevioletred;
   border-right: 1px solid palevioletred;
+
+  padding: 5px;
+  margin-right: 5px;
 }
