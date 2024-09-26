@@ -2,6 +2,7 @@ import "./style.css";
 import { fetchData, getElementTypeById } from "./utility";
 import { bucketList } from "./bucketList.js";
 import { createBucket } from "./bucket.js";
+import { createTodoItem } from "./todo.js";
 
 const expand = (e) => {
   e.target.nextSibling.firstChild.classList.toggle("show");
@@ -50,7 +51,7 @@ export const displayUI = (elementID = 0) => {
     switch (getElementTypeById(elementID)) {
       case "todo":
         elementUI = getTodoListUI(data);
-        newItemButton = getAddTodoItemButton();
+        newItemButton = getAddTodoItemButton(elementID);
         break;
       case "note":
         elementUI = getNotesUI(data);
@@ -78,10 +79,11 @@ export const displayUI = (elementID = 0) => {
   }
 };
 
-function getAddTodoItemButton() {
+function getAddTodoItemButton(elementID) {
   let button = document.createElement("button");
   button.classList.add("addTodoItemButton");
   button.innerText = "+ New Todo Item";
+  button.dataset.index = elementID;
   button.addEventListener("click", (e) => {
     let newTodoItemDialog = document.querySelector(".newTodoItemDialog");
     newTodoItemDialog.showModal();
@@ -241,10 +243,29 @@ function getAddTodoDialogUI() {
   let buttonOk = document.createElement("button");
   buttonOk.classList.add("newTodoItemSubmitButton");
   buttonOk.innerText = "Ok";
+  buttonOk.addEventListener("click", (e) => {
+    e.preventDefault();
+    let addButton = document.querySelector(".addTodoItemButton");
+    let bucket = bucketList[addButton.dataset.index.split("#")[0]];
+
+    let todoItem = createTodoItem(
+      todoTitle.value,
+      todoDescription.value,
+      todoDueDate.value,
+      todoPriority.value
+    );
+    bucket.addToBucket(todoItem);
+    console.log(bucket);
+    displayUI();
+  });
 
   let buttonCancel = document.createElement("button");
   buttonCancel.classList.add("newTodoItemCancelButton");
   buttonCancel.innerText = "Cancel";
+  buttonCancel.addEventListener("click", (e) => {
+    e.preventDefault();
+    dialog.close();
+  });
 
   buttonDiv.append(buttonOk, buttonCancel);
 
