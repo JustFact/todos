@@ -9,7 +9,7 @@ const expand = (e) => {
 };
 
 const bucketListNavClick = (e) => {
-  displayUI(e.target.dataset.index);
+  displayList(e.target.dataset.index);
 };
 
 export const getBucketListNavigator = (BucketList) => {
@@ -43,23 +43,26 @@ export const getBucketListNavigator = (BucketList) => {
   return bucketUL;
 };
 
+function displayList(elementID) {
+  let data = fetchData(elementID);
+  let elementUI;
+  let newItemButton;
+  switch (getElementTypeById(elementID)) {
+    case "todo":
+      elementUI = getTodoListUI(data);
+      newItemButton = getAddTodoItemButton(elementID);
+      break;
+    case "note":
+      elementUI = getNotesUI(data);
+      newItemButton = "Test2";
+      break;
+  }
+  let content = document.querySelector(".main-content");
+  content.replaceChildren(...[newItemButton, elementUI]);
+}
+
 export const displayUI = (elementID = 0) => {
   if (elementID != 0) {
-    let data = fetchData(elementID);
-    let elementUI;
-    let newItemButton;
-    switch (getElementTypeById(elementID)) {
-      case "todo":
-        elementUI = getTodoListUI(data);
-        newItemButton = getAddTodoItemButton(elementID);
-        break;
-      case "note":
-        elementUI = getNotesUI(data);
-        newItemButton = "Test2";
-        break;
-    }
-    let content = document.querySelector(".main-content");
-    content.replaceChildren(...[newItemButton, elementUI]);
   } else {
     const bucketListUI = getBucketListNavigator(bucketList);
     const addBucketButton = getAddBucketButton();
@@ -255,8 +258,11 @@ function getAddTodoDialogUI() {
       todoPriority.value
     );
     bucket.addToBucket(todoItem);
-    console.log(bucket);
-    displayUI();
+    // console.log(bucket);
+
+    let element = document.querySelector(".addTodoItemButton");
+    displayList(element.dataset.index);
+    dialog.close();
   });
 
   let buttonCancel = document.createElement("button");
