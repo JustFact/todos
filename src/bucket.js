@@ -9,10 +9,10 @@ export function createBucket(title) {
   const addToBucket = (element) => {
     switch (findInstanceOf(element)) {
       case "todo":
-        bucket[0].push(element);
+        bucket[0].unshift(element);
         break;
       case "note":
-        bucket[1].push(element);
+        bucket[1].unshift(element);
         break;
     }
   };
