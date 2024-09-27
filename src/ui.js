@@ -3,6 +3,7 @@ import { fetchData, getElementTypeById } from "./utility";
 import { bucketList } from "./bucketList.js";
 import { createBucket } from "./bucket.js";
 import { createTodoItem } from "./todo.js";
+import { createNote } from "./note.js";
 
 const expand = (e) => {
   e.target.nextSibling.firstChild.classList.toggle("show");
@@ -73,11 +74,18 @@ export const displayUI = (elementID = 0) => {
 
     const addBucketDialog = getAddBucketDialogUI();
     const addTodoItemDialog = getAddTodoDialogUI();
+    const addNoteItemDialog = getAddNoteDialogUI();
 
     const content = document.createElement("div");
     content.classList.add("main-content");
     document.body.replaceChildren(
-      ...[sidePanel, content, addBucketDialog, addTodoItemDialog]
+      ...[
+        sidePanel,
+        content,
+        addBucketDialog,
+        addTodoItemDialog,
+        addNoteItemDialog,
+      ]
     );
   }
 };
@@ -297,6 +305,58 @@ function getAddTodoDialogUI() {
 
   let form = document.createElement("form");
   form.append(todoTitle, todoDescription, div, buttonDiv);
+
+  dialog.append(form);
+  return dialog;
+}
+
+function getAddNoteDialogUI() {
+  let dialog = document.createElement("dialog");
+  dialog.classList.add("newNoteItemDialog");
+
+  let noteTitle = document.createElement("input");
+  noteTitle.classList.add("newNoteTitle");
+  noteTitle.placeholder = "Enter Note Title";
+
+  let noteDescription = document.createElement("textarea");
+  noteDescription.classList.add("newNoteDescription");
+  noteDescription.placeholder = "Enter Note Description";
+  noteDescription.cols = 50;
+  noteDescription.rows = 5;
+
+  let buttonDiv = document.createElement("div");
+  let buttonOk = document.createElement("button");
+  buttonOk.classList.add("newNoteItemSubmitButton");
+  buttonOk.innerText = "Ok";
+  buttonOk.addEventListener("click", (e) => {
+    e.preventDefault();
+    let addButton = document.querySelector(".addNoteItemButton");
+    let bucket = bucketList[addButton.dataset.index.split("#")[0]];
+
+    let noteItem = createNote(noteTitle.value, noteDescription.value);
+    bucket.addToBucket(noteItem);
+    noteTitle.value = "";
+    noteDescription.value = "";
+
+    let element = document.querySelector(".addNoteItemButton");
+    displayList(element.dataset.index);
+    dialog.close();
+  });
+
+  let buttonCancel = document.createElement("button");
+  buttonCancel.classList.add("newNoteItemCancelButton");
+  buttonCancel.innerText = "Cancel";
+  buttonCancel.addEventListener("click", (e) => {
+    e.preventDefault();
+    noteTitle.value = "";
+    noteDescription.value = "";
+    dialog.close();
+  });
+
+  buttonDiv.append(buttonOk, buttonCancel);
+
+  let form = document.createElement("form");
+  form.append(noteTitle, noteDescription, buttonDiv);
 
   dialog.append(form);
   return dialog;
