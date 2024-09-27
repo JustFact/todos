@@ -259,6 +259,10 @@ function getAddTodoDialogUI() {
     );
     bucket.addToBucket(todoItem);
     // console.log(bucket);
+    todoTitle.value = "";
+    todoDescription.value = "";
+    todoDueDate.value = "";
+    todoPriority.selectedIndex = 0;
 
     let element = document.querySelector(".addTodoItemButton");
     displayList(element.dataset.index);
