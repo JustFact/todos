@@ -274,6 +274,10 @@ function getAddTodoDialogUI() {
   buttonCancel.innerText = "Cancel";
   buttonCancel.addEventListener("click", (e) => {
     e.preventDefault();
+    todoTitle.value = "";
+    todoDescription.value = "";
+    todoDueDate.value = "";
+    todoPriority.selectedIndex = 0;
     dialog.close();
   });
 
