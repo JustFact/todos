@@ -148,7 +148,8 @@ ul > li:not(li > ul > li):nth-child(2n-1):hover {
 }
 
 .newBucketDialog,
-.newTodoItemDialog {
+.newTodoItemDialog,
+.newNoteItemDialog {
   margin: auto;
   background-color: lightpink;
   border-radius: 10px;
@@ -158,29 +159,35 @@ ul > li:not(li > ul > li):nth-child(2n-1):hover {
   border-right: 3px solid palevioletred;
 }
 
-.newTodoItemDialog form {
+.newTodoItemDialog form,
+.newNoteItemDialog form {
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
 
-.newTodoItemDialog form div {
+.newTodoItemDialog form div,
+.newNoteItemDialog form div {
   display: flex;
   justify-content: space-evenly;
 }
 
-.newTodoItemDialog .newTodoDescription {
+.newTodoItemDialog .newTodoDescription,
+.newNoteItemDialog .newNoteDescription {
   resize: none;
 }
 
-.newTodoItemDialog button {
+.newTodoItemDialog button,
+.newNoteItemDialog button {
   width: 100px;
   align-self: center;
 }
 
 .newBucketDialog .newBucketName,
 .newTodoItemDialog .newTodoTitle,
-.newTodoItemDialog .newTodoDescription {
+.newTodoItemDialog .newTodoDescription,
+.newNoteItemDialog .newNoteTitle,
+.newNoteItemDialog .newNoteDescription {
   outline: none;
   border-radius: 5px;
   background-color: whitesmoke;
@@ -194,7 +201,8 @@ ul > li:not(li > ul > li):nth-child(2n-1):hover {
 
 .newBucketDialog .newBucketSubmitButton,
 .newBucketDialog .newBucketCancelButton,
-.newTodoItemDialog button {
+.newTodoItemDialog button,
+.newNoteItemDialog button {
   border-radius: 5px;
   background-color: whitesmoke;
   border-top: 1px solid lightpink;
