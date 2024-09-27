@@ -54,7 +54,7 @@ function displayList(elementID) {
       break;
     case "note":
       elementUI = getNotesUI(data);
-      newItemButton = "Test2";
+      newItemButton = getAddNoteItemButton(elementID);
       break;
   }
   let content = document.querySelector(".main-content");
@@ -90,6 +90,18 @@ function getAddTodoItemButton(elementID) {
   button.addEventListener("click", (e) => {
     let newTodoItemDialog = document.querySelector(".newTodoItemDialog");
     newTodoItemDialog.showModal();
+  });
+  return button;
+}
+
+function getAddNoteItemButton(elementID) {
+  let button = document.createElement("button");
+  button.classList.add("addNoteItemButton");
+  button.innerText = "+ New Note Item";
+  button.dataset.index = elementID;
+  button.addEventListener("click", (e) => {
+    let newNoteItemDialog = document.querySelector(".newNoteItemDialog");
+    newNoteItemDialog.showModal();
   });
   return button;
 }
