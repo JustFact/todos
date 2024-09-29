@@ -69,6 +69,8 @@ ul > li:not(li > ul > li):nth-child(2n-1):hover {
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-shadow: 0px 0px 35px -2px rgb(168, 84, 252);
+  z-index: 2;
 }
 
 .side-panel .addBucketButton,
@@ -76,14 +78,14 @@ ul > li:not(li > ul > li):nth-child(2n-1):hover {
 .main-content .addNoteItemButton {
   width: 80%;
   margin-top: 5vh;
-  padding: 6px 13px;
+  padding: 10px 13px;
 
   background-color: rgb(0, 168, 0);
   border-top: 2px solid greenyellow;
   border-left: 2px solid greenyellow;
   border-right: 2px solid lightgreen;
   border-bottom: 2px solid lightgreen;
-  border-radius: 5px;
+  border-radius: 10px;
 
   color: aliceblue;
   font-weight: 600;
@@ -92,21 +94,22 @@ ul > li:not(li > ul > li):nth-child(2n-1):hover {
 .addTodoItemButton,
 .addNoteItemButton {
   max-width: 200px;
+  box-shadow: 0px 0px 15px 5px lightgreen;
 }
 
 .main-content {
   width: 100vw;
-  padding-top: 5px;
+  /* padding-top: 0px; */
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 9px;
+  gap: 16px;
   background-color: lightblue;
 }
 
 .todoList,
 .noteList {
-  box-shadow: 0px 0px 35px -15px black;
+  box-shadow: 0px 0px 35px 10px whitesmoke;
   border-radius: 7px;
   width: 65vw;
   height: 85vh;
@@ -114,7 +117,7 @@ ul > li:not(li > ul > li):nth-child(2n-1):hover {
   align-content: start;
   overflow-y: auto;
 
-  background-color: whitesmoke;
+  background-color: azure;
 }
 
 .todoListItem,
@@ -122,8 +125,12 @@ ul > li:not(li > ul > li):nth-child(2n-1):hover {
   border: 1px solid gainsboro;
   border-radius: inherit;
   margin: 5px;
-  padding: 5px;
+  margin-bottom: 10px;
+  padding: 13px;
   display: grid;
+  gap: 10px;
+  box-shadow: 1px 3px 10px -2px lightgreen;
+  background-color: white;
 }
 
 .todoListItem {
@@ -137,6 +144,18 @@ ul > li:not(li > ul > li):nth-child(2n-1):hover {
 
 .todoListItem .todo-description {
   grid-row: 2/-1;
+}
+
+.todoListItem .todo-title,
+.todoListItem .todo-description,
+.todoListItem .todo-dueDate,
+.todoListItem .todo-priority,
+.noteListItem .note-title,
+.noteListItem .note-description {
+  color: darkolivegreen;
+  background-color: aliceblue;
+  padding: 5px;
+  border-radius: 5px;
 }
 
 .noteListItem {

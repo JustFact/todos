@@ -121,7 +121,7 @@ function getTodoListUI(data) {
     const todoListItem = document.createElement("div");
     todoListItem.classList.add("todoListItem");
 
-    const todoTitle = document.createElement("h3");
+    const todoTitle = document.createElement("h4");
     todoTitle.classList.add("todo-title");
     const todoDescription = document.createElement("p");
     todoDescription.classList.add("todo-description");
@@ -148,7 +148,7 @@ function getNotesUI(data) {
     const NoteListItem = document.createElement("div");
     NoteListItem.classList.add("noteListItem");
 
-    const noteTitle = document.createElement("h3");
+    const noteTitle = document.createElement("h4");
     noteTitle.classList.add("note-title");
     const noteDescription = document.createElement("p");
     noteDescription.classList.add("note-description");
