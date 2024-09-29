@@ -111,6 +111,7 @@ ul > li:not(li > ul > li):nth-child(2n-1):hover {
 .noteList {
   box-shadow: 0px 0px 35px 10px whitesmoke;
   border-radius: 7px;
+  padding: 5px;
   width: 65vw;
   height: 85vh;
   display: grid;
@@ -134,7 +135,7 @@ ul > li:not(li > ul > li):nth-child(2n-1):hover {
 }
 
 .todoListItem {
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 0.5fr 1fr 1fr;
   grid-template-columns: 3fr 1fr;
 }
 
@@ -154,16 +155,22 @@ ul > li:not(li > ul > li):nth-child(2n-1):hover {
 .noteListItem .note-description {
   color: darkolivegreen;
   background-color: aliceblue;
-  padding: 5px;
+  padding: 10px;
   border-radius: 5px;
 }
 
 .noteListItem {
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 0.5fr 1fr 1fr;
 }
 
 .noteListItem .note-description {
   grid-row: 2/-1;
+}
+
+.todoListItem .todo-description,
+.noteListItem .note-description {
+  max-height: 190px;
+  overflow-y: auto;
 }
 
 .newBucketDialog,
