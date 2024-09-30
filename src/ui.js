@@ -6,7 +6,7 @@ import { createTodoItem } from "./todo.js";
 import { createNote } from "./note.js";
 
 const expand = (e) => {
-  e.target.nextSibling.firstChild.classList.toggle("show");
+  e.currentTarget.nextSibling.firstChild.classList.toggle("show");
 };
 
 const bucketListNavClick = (e) => {
@@ -22,7 +22,9 @@ export const getBucketListNavigator = (BucketList) => {
     const subBucketTodos = document.createElement("li");
     const subBucketNotes = document.createElement("li");
 
-    bucketTitle.innerText = BucketList[i].title;
+    bucketTitle.innerHTML =
+      '<svg class="icon bucket" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>pail</title><path d="M11.5 7.63C11.97 7.35 12.58 7.5 12.86 8C13.14 8.47 12.97 9.09 12.5 9.36L4.27 14.11C3.79 14.39 3.18 14.23 2.9 13.75C2.62 13.27 2.79 12.66 3.27 12.38L11.5 7.63M7 21L5.79 14.97L13.21 10.69C14 10.26 14.5 9.44 14.5 8.5C14.5 7.12 13.38 6 12 6C11.53 6 11.09 6.13 10.71 6.36L4.76 9.79L4 6H3V4H21V6H20L17 21H7Z" /></svg>' +
+      BucketList[i].title;
 
     subBucketTodos.innerText = "Todos";
     subBucketTodos.dataset.index = `${i}#todo`;
@@ -93,7 +95,8 @@ export const displayUI = (elementID = 0) => {
 function getAddTodoItemButton(elementID) {
   let button = document.createElement("button");
   button.classList.add("addTodoItemButton");
-  button.innerText = "+ New Todo Item";
+  button.innerHTML =
+    '<svg class="icon plusBucket" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>plus</title><path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" /></svg> New Todo Item';
   button.dataset.index = elementID;
   button.addEventListener("click", (e) => {
     let newTodoItemDialog = document.querySelector(".newTodoItemDialog");
@@ -105,7 +108,8 @@ function getAddTodoItemButton(elementID) {
 function getAddNoteItemButton(elementID) {
   let button = document.createElement("button");
   button.classList.add("addNoteItemButton");
-  button.innerText = "+ New Note Item";
+  button.innerHTML =
+    '<svg class="icon plusBucket" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>plus</title><path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" /></svg> New Note Item';
   button.dataset.index = elementID;
   button.addEventListener("click", (e) => {
     let newNoteItemDialog = document.querySelector(".newNoteItemDialog");
@@ -178,7 +182,8 @@ function displayAddBucketDialogUI(e) {
 function getAddBucketButton() {
   let button = document.createElement("button");
   button.classList.add("addBucketButton");
-  button.innerText = "+ New Bucket!";
+  button.innerHTML =
+    '<svg class="icon plusBucket" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>plus</title><path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" /></svg> New Bucket!';
   button.dataset.elementOps = "newBucket";
   button.addEventListener("click", displayAddBucketDialogUI);
   return button;

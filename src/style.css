@@ -62,6 +62,10 @@ ul > li:not(li > ul > li):nth-child(2n-1):hover {
   border-radius: 3px;
 }
 
+ul > li:not(li > ul > li):nth-child(2n-1):hover .bucket {
+  fill: orange;
+}
+
 .side-panel {
   height: 100vh;
   min-width: fit-content;
@@ -89,6 +93,10 @@ ul > li:not(li > ul > li):nth-child(2n-1):hover {
 
   color: aliceblue;
   font-weight: 600;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .addTodoItemButton,
@@ -262,4 +270,14 @@ ul > li:not(li > ul > li):nth-child(2n-1):hover {
 
 .todo-dueDate.collapse {
   grid-column: 2/3;
+}
+
+.icon {
+  width: 20px;
+  fill: aliceblue;
+  vertical-align: text-bottom;
+}
+
+.bucket {
+  margin-right: 5px;
 }
