@@ -239,3 +239,27 @@ ul > li:not(li > ul > li):nth-child(2n-1):hover {
   padding: 5px;
   margin-right: 5px;
 }
+
+.todo-description.collapse {
+  display: none;
+}
+
+.todoListItem.collapse {
+  grid-template-rows: 1fr;
+  grid-template-columns: 2fr 100px 50px;
+}
+
+.todo-title.collapse,
+.todo-dueDate.collapse,
+.todo-priority.collapse {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.todo-title.collapse {
+  grid-column: 1/2;
+}
+
+.todo-dueDate.collapse {
+  grid-column: 2/3;
+}

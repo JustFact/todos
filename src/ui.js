@@ -119,21 +119,29 @@ function getTodoListUI(data) {
   todoList.classList.add("todoList");
   for (let i = 0; i < data.length; i++) {
     const todoListItem = document.createElement("div");
-    todoListItem.classList.add("todoListItem");
+    todoListItem.classList.add("todoListItem", "collapse");
 
     const todoTitle = document.createElement("h4");
-    todoTitle.classList.add("todo-title");
+    todoTitle.classList.add("todo-title", "collapse");
     const todoDescription = document.createElement("p");
-    todoDescription.classList.add("todo-description");
+    todoDescription.classList.add("todo-description", "collapse");
     const todoDueDate = document.createElement("div");
-    todoDueDate.classList.add("todo-dueDate");
+    todoDueDate.classList.add("todo-dueDate", "collapse");
     const todoPriority = document.createElement("div");
-    todoPriority.classList.add("todo-priority");
+    todoPriority.classList.add("todo-priority", "collapse");
 
     todoTitle.innerText = data[i].title;
     todoDescription.innerText = data[i].description;
     todoDueDate.innerText = data[i].dueDate;
     todoPriority.innerText = data[i].priority;
+
+    todoTitle.addEventListener("click", () => {
+      todoListItem.classList.toggle("collapse");
+      todoTitle.classList.toggle("collapse");
+      todoDescription.classList.toggle("collapse");
+      todoDueDate.classList.toggle("collapse");
+      todoPriority.classList.toggle("collapse");
+    });
 
     todoListItem.append(todoTitle, todoDescription, todoDueDate, todoPriority);
     todoList.append(todoListItem);
