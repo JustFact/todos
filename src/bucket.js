@@ -17,8 +17,8 @@ export function createBucket(title) {
     }
   };
 
-  const deleteFromBucket = (index, element) => {
-    switch (findInstanceOf(element)) {
+  const deleteFromBucket = (index, elementType) => {
+    switch (elementType) {
       case "todo":
         bucket[0].splice(index, 1);
         break;
