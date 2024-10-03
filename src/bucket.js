@@ -28,9 +28,28 @@ export function createBucket(title) {
     }
   };
 
+  const editTodo = (index, title, description, date, priority) => {
+    todo[index].title = title;
+    todo[index].description = description;
+    todo[index].date = date;
+    todo[index].priority = priority;
+  };
+
+  const editNote = (index, title, description) => {
+    note[index].title = title;
+    note[index].description = description;
+  };
+
   const getBucket = () => {
     return bucket;
   };
 
-  return { title, addToBucket, getBucket, deleteFromBucket };
+  return {
+    title,
+    addToBucket,
+    getBucket,
+    deleteFromBucket,
+    editTodo,
+    editNote,
+  };
 }
