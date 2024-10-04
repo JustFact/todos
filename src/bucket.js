@@ -31,7 +31,7 @@ export function createBucket(title) {
   const editTodo = (index, title, description, date, priority) => {
     todo[index].title = title;
     todo[index].description = description;
-    todo[index].date = date;
+    todo[index].dueDate = date;
     todo[index].priority = priority;
   };
 
