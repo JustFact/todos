@@ -2,6 +2,25 @@ import { todoSymbol } from "./todo";
 import { noteSymbol } from "./note";
 import { bucketList } from "./bucketList";
 
+let TODO_DIALOG_OPEN_BY = "";
+let TODO_EDIT_INDEX = "";
+
+export function setTodoDialogOpenedBy(value) {
+  TODO_DIALOG_OPEN_BY = value;
+}
+
+export function getTodoDialogOpenedBy() {
+  return TODO_DIALOG_OPEN_BY;
+}
+
+export function setTodoEditIndex(value) {
+  TODO_EDIT_INDEX = value;
+}
+
+export function getTodoEditIndex() {
+  return TODO_EDIT_INDEX;
+}
+
 export function findInstanceOf(element) {
   //this will determine whether the element passed is
   //a todo item, note,

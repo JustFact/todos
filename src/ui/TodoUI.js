@@ -1,5 +1,11 @@
 import { bucketList } from "../bucketList";
 import { createTodoItem } from "../todo";
+import {
+  getTodoDialogOpenedBy,
+  getTodoEditIndex,
+  setTodoDialogOpenedBy,
+  setTodoEditIndex,
+} from "../utility";
 import { displayList } from "./ui";
 
 export const getAddTodoItemButton = (elementID) => {
@@ -9,6 +15,7 @@ export const getAddTodoItemButton = (elementID) => {
     '<svg class="icon plusBucket" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>plus</title><path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" /></svg> New Todo Item';
   button.dataset.index = elementID;
   button.addEventListener("click", (e) => {
+    setTodoDialogOpenedBy("addTodo");
     let newTodoItemDialog = document.querySelector(".newTodoItemDialog");
     newTodoItemDialog.showModal();
   });
@@ -44,6 +51,31 @@ export const getTodoListUI = (data) => {
     editButton.classList.add("todoEditButton", "collapse");
     editButton.innerHTML =
       '<svg class="icon todoEditIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>lead-pencil</title><path d="M16.84,2.73C16.45,2.73 16.07,2.88 15.77,3.17L13.65,5.29L18.95,10.6L21.07,8.5C21.67,7.89 21.67,6.94 21.07,6.36L17.9,3.17C17.6,2.88 17.22,2.73 16.84,2.73M12.94,6L4.84,14.11L7.4,14.39L7.58,16.68L9.86,16.85L10.15,19.41L18.25,11.3M4.25,15.04L2.5,21.73L9.2,19.94L8.96,17.78L6.65,17.61L6.47,15.29" /></svg>';
+
+    editButton.addEventListener("click", (e) => {
+      setTodoDialogOpenedBy("editTodo");
+      let todoItemDialog = document.querySelector(".newTodoItemDialog");
+      let todoIndex = e.currentTarget.parentNode.parentNode.dataset.index;
+      setTodoEditIndex(todoIndex);
+      let elementID =
+        document.querySelector(".addTodoItemButton").dataset.index;
+      let bucketIndex = elementID.split("#")[0];
+
+      // setTodoEditIndex(todoIndex);
+      let dialogTitle = document.querySelector(".newTodoTitle");
+      let dialogDescription = document.querySelector(".newTodoDescription");
+      let dialogDueDate = document.querySelector(".newTodoDueDate");
+      let dialogPriority = document.querySelector(".newTodoPriority");
+
+      let currentTodo = bucketList[bucketIndex].getTodo(todoIndex);
+
+      dialogTitle.value = currentTodo.title;
+      dialogDescription.value = currentTodo.description;
+      dialogDueDate.value = currentTodo.dueDate;
+      dialogPriority.value = currentTodo.priority;
+
+      todoItemDialog.showModal();
+    });
 
     let deleteButton = document.createElement("button");
     deleteButton.classList.add("todoDeleteButton");
@@ -140,25 +172,53 @@ export const getAddTodoDialogUI = () => {
   buttonOk.innerText = "Ok";
   buttonOk.addEventListener("click", (e) => {
     e.preventDefault();
-    let addButton = document.querySelector(".addTodoItemButton");
-    let bucket = bucketList[addButton.dataset.index.split("#")[0]];
+    let value = getTodoDialogOpenedBy();
+    switch (value) {
+      case "addTodo":
+        let addButton = document.querySelector(".addTodoItemButton");
+        let bucket = bucketList[addButton.dataset.index.split("#")[0]];
 
-    let todoItem = createTodoItem(
-      todoTitle.value,
-      todoDescription.value,
-      todoDueDate.value,
-      todoPriority.value
-    );
-    bucket.addToBucket(todoItem);
-    // console.log(bucket);
+        let todoItem = createTodoItem(
+          todoTitle.value,
+          todoDescription.value,
+          todoDueDate.value,
+          todoPriority.value
+        );
+        bucket.addToBucket(todoItem);
+        let element = document.querySelector(".addTodoItemButton");
+        displayList(element.dataset.index);
+
+        dialog.close();
+        break;
+
+      case "editTodo":
+        let elementID =
+          document.querySelector(".addTodoItemButton").dataset.index;
+        let bucketIndex = elementID.split("#")[0];
+        let dialogTitle = document.querySelector(".newTodoTitle");
+        let dialogDescription = document.querySelector(".newTodoDescription");
+        let dialogDueDate = document.querySelector(".newTodoDueDate");
+        let dialogPriority = document.querySelector(".newTodoPriority");
+
+        bucketList[bucketIndex].editTodo(
+          getTodoEditIndex(),
+          dialogTitle.value,
+          dialogDescription.value,
+          dialogDueDate.value,
+          dialogPriority.value
+        );
+        displayList(elementID);
+        dialog.close();
+        break;
+    }
+
+    //resetting everything once closed
     todoTitle.value = "";
     todoDescription.value = "";
     todoDueDate.value = "";
     todoPriority.selectedIndex = 0;
-
-    let element = document.querySelector(".addTodoItemButton");
-    displayList(element.dataset.index);
-    dialog.close();
+    setTodoDialogOpenedBy("");
+    setTodoEditIndex("");
   });
 
   let buttonCancel = document.createElement("button");
@@ -170,6 +230,8 @@ export const getAddTodoDialogUI = () => {
     todoDescription.value = "";
     todoDueDate.value = "";
     todoPriority.selectedIndex = 0;
+    setTodoDialogOpenedBy("");
+    setTodoEditIndex("");
     dialog.close();
   });
 
