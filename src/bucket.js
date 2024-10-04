@@ -40,6 +40,10 @@ export function createBucket(title) {
     note[index].description = description;
   };
 
+  const getTodo = (index) => {
+    return bucket[0][index];
+  };
+
   const getBucket = () => {
     return bucket;
   };
@@ -51,5 +55,6 @@ export function createBucket(title) {
     deleteFromBucket,
     editTodo,
     editNote,
+    getTodo,
   };
 }
