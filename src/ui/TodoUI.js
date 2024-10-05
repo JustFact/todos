@@ -39,7 +39,10 @@ export const getTodoListUI = (data) => {
     const todoPriority = document.createElement("div");
     todoPriority.classList.add("todo-priority", "collapse");
 
-    todoTitle.innerText = data[i].title;
+    let todoItemAnchor = document.createElement("a");
+    todoItemAnchor.href = "#";
+    todoItemAnchor.innerText = data[i].title;
+    todoTitle.append(todoItemAnchor);
     todoDescription.innerText = data[i].description;
     todoDueDate.innerText = data[i].dueDate;
     let priorityIcons = [

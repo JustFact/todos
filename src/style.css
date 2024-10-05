@@ -77,6 +77,11 @@ ul > li:not(li > ul > li):nth-child(2n-1):hover .bucket {
   z-index: 2;
 }
 
+.side-panel a {
+  text-decoration: none;
+  color: aliceblue;
+}
+
 .side-panel .addBucketButton,
 .main-content .addTodoItemButton,
 .main-content .addNoteItemButton {
@@ -149,6 +154,11 @@ ul > li:not(li > ul > li):nth-child(2n-1):hover .bucket {
 
 .todoListItem .todo-title {
   grid-column: 1/2;
+}
+
+.todoListItem .todo-title a {
+  text-decoration: none;
+  color: darkolivegreen;
 }
 
 .todoListItem .todo-description {
