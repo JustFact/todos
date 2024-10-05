@@ -155,6 +155,13 @@ ul > li:not(li > ul > li):nth-child(2n-1):hover .bucket {
   grid-row: 2/-1;
 }
 
+.todoListItem .todo-priority,
+.todoListItem .todo-dueDate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .todoListItem .buttonDiv {
   display: flex;
   justify-content: space-evenly;
@@ -336,5 +343,10 @@ ul > li:not(li > ul > li):nth-child(2n-1):hover .bucket {
 }
 
 .todoEditIcon {
+  fill: darkolivegreen;
+}
+
+.priorityIcon {
+  /* width: 25px; */
   fill: darkolivegreen;
 }

@@ -42,7 +42,13 @@ export const getTodoListUI = (data) => {
     todoTitle.innerText = data[i].title;
     todoDescription.innerText = data[i].description;
     todoDueDate.innerText = data[i].dueDate;
-    todoPriority.innerText = data[i].priority;
+    let priorityIcons = [
+      '<svg class="icon priorityIcon priority-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M1,21H21V1M19,5.83V19H11V13.83" /></svg>',
+      '<svg class="icon priorityIcon priority-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M1,21H21V1M19,5.83V19H13V11.83" /></svg>',
+      '<svg class="icon priorityIcon priority-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M1,21H21V1M19,5.83V19H16V8.83" /></svg>',
+      '<svg class="icon priorityIcon priority-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M1,21H21V1" /></svg>',
+    ];
+    todoPriority.innerHTML = priorityIcons[data[i].priority - 1];
 
     let buttonDiv = document.createElement("div");
     buttonDiv.classList.add("buttonDiv", "collapse");
