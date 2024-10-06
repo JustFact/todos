@@ -4,6 +4,8 @@ import { bucketList } from "./bucketList";
 
 let TODO_DIALOG_OPEN_BY = "";
 let TODO_EDIT_INDEX = "";
+let NOTE_DIALOG_OPEN_BY = "";
+let NOTE_EDIT_INDEX = "";
 
 export function setTodoDialogOpenedBy(value) {
   TODO_DIALOG_OPEN_BY = value;
@@ -19,6 +21,22 @@ export function setTodoEditIndex(value) {
 
 export function getTodoEditIndex() {
   return TODO_EDIT_INDEX;
+}
+
+export function setNoteDialogOpenedBy(value) {
+  NOTE_DIALOG_OPEN_BY = value;
+}
+
+export function getNoteDialogOpenedBy() {
+  return NOTE_DIALOG_OPEN_BY;
+}
+
+export function setNoteEditIndex(value) {
+  NOTE_EDIT_INDEX = value;
+}
+
+export function getNoteEditIndex() {
+  return NOTE_EDIT_INDEX;
 }
 
 export function findInstanceOf(element) {

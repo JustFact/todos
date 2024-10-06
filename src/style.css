@@ -172,19 +172,23 @@ ul > li:not(li > ul > li):nth-child(2n-1):hover .bucket {
   align-items: center;
 }
 
-.todoListItem .buttonDiv {
+.todoListItem .buttonDiv,
+.noteListItem .buttonDiv {
   display: flex;
   justify-content: space-evenly;
   gap: 5px;
 }
 
 .todoEditButton,
-.todoDeleteButton {
+.todoDeleteButton,
+.noteEditButton,
+.noteDeleteButton {
   border-radius: 5px;
   width: 80px;
 }
 
-.todoEditButton {
+.todoEditButton,
+.noteEditButton {
   background-color: rgb(255, 255, 81);
   border-top: 1px solid white;
   border-left: 1px solid white;
@@ -192,11 +196,13 @@ ul > li:not(li > ul > li):nth-child(2n-1):hover .bucket {
   border-right: 1px solid orange;
 }
 
-.todoEditButton:hover {
+.todoEditButton:hover,
+.noteEditButton:hover {
   background-color: rgb(245, 245, 81);
 }
 
-.todoDeleteButton {
+.todoDeleteButton,
+.noteDeleteButton {
   background-color: rgb(255, 99, 71);
   border-top: 1px solid pink;
   border-left: 1px solid pink;
@@ -204,7 +210,8 @@ ul > li:not(li > ul > li):nth-child(2n-1):hover .bucket {
   border-right: 1px solid red;
 }
 
-.todoDeleteButton:hover {
+.todoDeleteButton:hover,
+.noteDeleteButton:hover {
   background-color: rgb(245, 89, 71);
 }
 
@@ -222,11 +229,26 @@ ul > li:not(li > ul > li):nth-child(2n-1):hover .bucket {
 
 .noteListItem {
   grid-template-rows: 0.5fr 1fr 1fr;
+  grid-template-columns: 3fr 1fr;
 }
 
 /* .noteListItem .note-description {
   grid-row: 2/-1;
 } */
+
+.noteListItem .note-title {
+  grid-column: 1/2;
+  grid-row: 1;
+}
+
+.noteListItem .buttonDiv {
+  grid-row: 1;
+}
+
+.noteListItem .note-description {
+  grid-column: 1/-1;
+  grid-row: 2/-1;
+}
 
 .todoListItem .todo-description,
 .noteListItem .note-description {
@@ -352,7 +374,8 @@ ul > li:not(li > ul > li):nth-child(2n-1):hover .bucket {
   margin-right: 5px;
 }
 
-.todoEditIcon {
+.todoEditIcon,
+.noteEditIcon {
   fill: darkolivegreen;
 }
 

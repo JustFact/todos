@@ -44,6 +44,10 @@ export function createBucket(title) {
     return bucket[0][index];
   };
 
+  const getNote = (index) => {
+    return bucket[1][index];
+  };
+
   const getBucket = () => {
     return bucket;
   };
@@ -56,5 +60,6 @@ export function createBucket(title) {
     editTodo,
     editNote,
     getTodo,
+    getNote,
   };
 }
