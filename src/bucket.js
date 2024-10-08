@@ -52,10 +52,16 @@ export function createBucket(title) {
     return bucket;
   };
 
+  const setBucket = (arr) => {
+    bucket.splice(0, 2); //emptying the bucket array
+    bucket.push(...arr);
+  };
+
   return {
     title,
     addToBucket,
     getBucket,
+    setBucket,
     deleteFromBucket,
     editTodo,
     editNote,
