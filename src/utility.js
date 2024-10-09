@@ -63,3 +63,12 @@ export function fetchData(string) {
       return bucketData[1];
   }
 }
+
+export const updateLocalStorage = () => {
+  localStorage.setItem("bucketTitle", JSON.stringify(bucketList));
+  let bucketData = [];
+  for (let i = 0; i < bucketList.length; i++) {
+    bucketData.push(bucketList[i].getBucket());
+  }
+  localStorage.setItem("bucketData", JSON.stringify(bucketData));
+};

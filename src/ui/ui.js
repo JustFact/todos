@@ -1,5 +1,5 @@
 import "../style.css";
-import { fetchData, getElementTypeById } from "../utility";
+import { fetchData, getElementTypeById, updateLocalStorage } from "../utility";
 import { bucketList } from "../bucketList.js";
 import {
   getAddBucketButton,
@@ -33,6 +33,9 @@ export const displayList = (elementID) => {
   }
   let content = document.querySelector(".main-content");
   content.replaceChildren(...[newItemButton, elementUI]);
+
+  //updates the Todo and Note List of a bucket
+  updateLocalStorage();
 };
 
 export const displayUI = (elementID = 0) => {
@@ -61,4 +64,7 @@ export const displayUI = (elementID = 0) => {
       ]
     );
   }
+
+  //updates buckets in bucketList
+  updateLocalStorage();
 };
