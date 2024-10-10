@@ -85,6 +85,13 @@ export const getNotesUI = (data) => {
     NoteListItem.append(noteTitle, buttonDiv, noteDescription);
     NoteList.append(NoteListItem);
   }
+  if (data.length === 0) {
+    const emptyNotePlaceholder = document.createElement("span");
+    emptyNotePlaceholder.classList.add("emptyNote");
+    emptyNotePlaceholder.innerText =
+      'Create a new Note item by clicking "+New Note Item" button above.';
+    NoteList.append(emptyNotePlaceholder);
+  }
   return NoteList;
 };
 

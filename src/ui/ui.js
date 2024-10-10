@@ -54,6 +54,11 @@ export const displayUI = (elementID = 0) => {
 
     const content = document.createElement("div");
     content.classList.add("main-content");
+    const emptyBucketPlaceholder = document.createElement("div");
+    emptyBucketPlaceholder.classList.add("emptyBucket");
+    emptyBucketPlaceholder.innerText =
+      "Please select any bucket from side panel or create a new one!";
+    content.append(emptyBucketPlaceholder);
     document.body.replaceChildren(
       ...[
         sidePanel,

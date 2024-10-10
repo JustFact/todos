@@ -120,6 +120,13 @@ export const getTodoListUI = (data) => {
     );
     todoList.append(todoListItem);
   }
+  if (data.length === 0) {
+    const emptyTodoPlaceholder = document.createElement("span");
+    emptyTodoPlaceholder.classList.add("emptyTodo");
+    emptyTodoPlaceholder.innerText =
+      'Create a new Todo item by clicking "+New Todo Item" button above.';
+    todoList.append(emptyTodoPlaceholder);
+  }
   return todoList;
 };
 
