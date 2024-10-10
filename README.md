@@ -1,2 +1,3 @@
 # todos
-Javascript todos project
+Javascript todos project  
+[Live demo](https://justfact.github.io/todos/)
