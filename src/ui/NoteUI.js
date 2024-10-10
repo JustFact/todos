@@ -5,7 +5,6 @@ import {
   getNoteEditIndex,
   setNoteDialogOpenedBy,
   setNoteEditIndex,
-  setTodoEditIndex,
 } from "../utility";
 import { displayList } from "./ui";
 
@@ -16,6 +15,7 @@ export const getAddNoteItemButton = (elementID) => {
     '<svg class="icon plusBucket" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>plus</title><path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" /></svg> New Note Item';
   button.dataset.index = elementID;
   button.addEventListener("click", (e) => {
+    setNoteDialogOpenedBy("addNote");
     let newNoteItemDialog = document.querySelector(".newNoteItemDialog");
     newNoteItemDialog.showModal();
   });
