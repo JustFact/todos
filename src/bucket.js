@@ -29,15 +29,15 @@ export function createBucket(title) {
   };
 
   const editTodo = (index, title, description, date, priority) => {
-    todo[index].title = title;
-    todo[index].description = description;
-    todo[index].dueDate = date;
-    todo[index].priority = priority;
+    bucket[0][index].title = title;
+    bucket[0][index].description = description;
+    bucket[0][index].dueDate = date;
+    bucket[0][index].priority = priority;
   };
 
   const editNote = (index, title, description) => {
-    note[index].title = title;
-    note[index].description = description;
+    bucket[1][index].title = title;
+    bucket[1][index].description = description;
   };
 
   const getTodo = (index) => {
