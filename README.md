@@ -9,3 +9,4 @@ Javascript todos project
 - Webpack
 - JSON format
 - LocalStorage API
+- Accessibility (able to navigate by keyboard only)
