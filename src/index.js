@@ -3,7 +3,7 @@ import { displayUI } from "./ui/ui.js";
 displayUI();
 
 /*  ######## MUST HAVE ########## 
-
+    Ability to delete bucket
 */
 
 /*  =======SHOULD HAVE========
